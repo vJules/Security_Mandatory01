@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Shift Cipher";
+    @model Security_Mandatory01.ViewModels.ShiftViewModel
+}
+
+@using (Html.BeginForm("PlainText", "Shift", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="text">Text to encrypt/decrypt</label>
+            @Html.TextAreaFor(x => x.text, new { @class = "form-control", id = "text" })
+        
+    </div>
+    <div class="form-group">
+        <label for="numberKey">Shift amount</label>
+        @Html.EditorFor(x => x.numberKey, new { @class = "form-control", id = "numberKey", htmlAttributes = new { min = -26, max = 26 } })
+    </div>
+        <input type="submit"/>
+
+}
+@if (Model != null)
+{
+    <p>@Model.encodedText</p>
+}
+

@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Vignere Cipher";
+    @model Security_Mandatory01.ViewModels.VigViewModel
+}
+
+@using (Html.BeginForm("PlainText", "Vig", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="text">Text to encrypt</label>
+
+        @Html.TextAreaFor(x => x.text, new { @class = "form-control", id = "text" })
+
+    </div>
+    <div class="form-group">
+        <label for="key">Key</label>
+        @Html.EditorFor(x => x.key, new { @class = "form-control", id = "key" })
+    </div>
+    <input type="submit" />
+
+}
+
+@using (Html.BeginForm("Encrypted", "Vig", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="text">Text to decrypt</label>
+        @Html.TextAreaFor(x => x.encodedText, new { @class = "form-control", id = "encodedText" })
+
+    </div>
+    <div class="form-group">
+        <label for="theNumber">Key</label>
+        @Html.EditorFor(x => x.key, new { @class = "form-control", id = "key" })
+    </div>
+    <input type="submit" />
+
+}
